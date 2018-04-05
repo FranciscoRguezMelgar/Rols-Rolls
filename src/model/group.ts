@@ -1,9 +1,8 @@
-import { User } from "user";
+import { User } from "./user";
 export class Group{
-	private members: User[];
-	
+	private members: User[];	
 	addMember(n: User){
-		members.push(n);
+		this.members.push(n);
 	}
 	getMembers(){
 		return this.members;
