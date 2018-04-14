@@ -4,8 +4,12 @@ import { IonicStorageModule } from '@ionic/storage';
 
 @Injectable()
 export class PersistComp{
-	constructor(public ism:IonicStorageModule ){
-		alert(ism.ready);
+	constructor(public ism:IonicStorageModule){
+		ism.ready.then(
+			(readyness) => {
+				alert(JSON.stringify(readyness))
+			}
+		);
 	}
 
 
