@@ -14,10 +14,10 @@ export class BtComp{
 	search(data){		
 		this.bts.discoverUnpaired().then(
 			(success) =>{
-				data.texto = success;
+				data = success;
 			},
 			(err)=>{
-				data.texto = "Fracaso";
+				data = "Fracaso";
 				console.log(JSON.stringify(err))
 			}
 		)		
