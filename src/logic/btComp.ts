@@ -15,7 +15,9 @@ export class BtComp{
 		this.bts.discoverUnpaired().then(
 			(unpairedDevices) =>{
 				data.length = 0;
-				data.concat(unpairedDevices)
+				for(var ii = 0; ii < unpairedDevices.length; ii++){
+					data.push(unpairedDevices[ii])
+				}
 				t = [JSON.stringify(data)];
 				alert(t[0])
 			},
