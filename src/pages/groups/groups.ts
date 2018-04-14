@@ -15,7 +15,7 @@ import { BtComp } from '../../logic/btComp';
   templateUrl: 'groups.html',
 })
 export class GroupsPage {
-	public devices = [];
+	public devices = [{name:"Don Pepito", address:"AA:AA:AA:AA:AA:AA"}];
   constructor(public navCtrl: NavController, public navParams: NavParams, public btc:BtComp) {
   }
 

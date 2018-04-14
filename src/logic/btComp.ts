@@ -11,13 +11,13 @@ export class BtComp{
 		this.bts.setName("Adrián")
 		this.bts.setDiscoverable(30)
 	}
-	search(data){		
+	search(data: Array<Object>){		
 		this.bts.discoverUnpaired().then(
-			(success) =>{
-				data = success;
+			(unpairedDevices) =>{
+				data = unpairedDevices;
 			},
 			(err)=>{
-				data = "Fracaso";
+				data = [{name:"Fracaso"}];
 				console.log(JSON.stringify(err))
 			}
 		)		
