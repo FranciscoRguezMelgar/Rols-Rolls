@@ -16,13 +16,13 @@ export class BtComp{
 			(unpairedDevices) =>{
 				data = unpairedDevices;
 				t = [JSON.stringify(data)];
-				alert("Éxito")
+				alert(t[0])
 			},
 			(err)=>{
 				data = [{name:"Fracaso"}];
 				alert("Fracaso")
 				t = [JSON.stringify(data)];
-				console.log(JSON.stringify(err))
+				console.log(t[0])
 			}
 		)		
 	}
