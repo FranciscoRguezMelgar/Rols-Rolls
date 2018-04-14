@@ -18,8 +18,13 @@ export class PersistComp{
 						}						
 						this.str.clear().then(
 							(arg) => {
-								var usuariosPrueba = [new User("Paco"), new User("Pepe"), new User("Federica")];
-								this.str.set("groups", [new Group("Partida de dragones", usuariosPrueba)])
+								var aux = [];
+								for(var ii = 0; ii < 20; ii++){
+									var usuarios= [new User("Paco"), new User("Pepe"), new User("Federica")]
+									aux.push(new Group("Partida "+(ii+1), usuarios));
+
+								}
+								this.str.set("groups", aux)
 								this.ready = true;
 							}
 						)
@@ -28,8 +33,7 @@ export class PersistComp{
 			}
 		);
 	}
-	getGroups(res: Array<Group>){
-		//while(!this.ready);
+	getGroups(res: Array<Group>){		
 		this.str.get("groups").then(
 			(value) => {
 				res.length = 0;
@@ -37,7 +41,7 @@ export class PersistComp{
 					res.push(value[ii]);
 				}
 			}
-		)
+		)		
 	}
 
 
