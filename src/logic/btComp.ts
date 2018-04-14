@@ -11,7 +11,7 @@ export class BtComp{
 		this.bts.setName("Adrián")
 		this.bts.setDiscoverable(30)
 	}
-	search(data: Array<Object>, t:Array[string]){		
+	search(data: Array<Object>, t:Array<string>){		
 		this.bts.discoverUnpaired().then(
 			(unpairedDevices) =>{
 				data = unpairedDevices;
