@@ -20,7 +20,17 @@
 	<button ion-button (click)="setVisible()">
 		<ion-icon name="eye"></ion-icon> Hacerte visible
 	</button>
-	
+
+	<ion-card *ngFor="let device from JSON.parse(data.texto)">
+		<ion-card-header>
+			<strong>{{device.nombre}}</strong>
+		</ion-card-header>
+
+		<ion-card-content>
+			{{device.address}}
+		</ion-card-content>
+	</ion-card>
+
 	{{data.texto}}
 	
 

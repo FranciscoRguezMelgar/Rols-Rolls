@@ -15,7 +15,7 @@ import { BtComp } from '../../logic/btComp';
   templateUrl: 'groups.html',
 })
 export class GroupsPage {
-	public data = {texto:"Dispositivos: "}
+	public data = {texto:""}
   constructor(public navCtrl: NavController, public navParams: NavParams, public btc:BtComp) {
   }
 
