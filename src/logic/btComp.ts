@@ -14,7 +14,7 @@ export class BtComp{
 	search(data){		
 		this.bts.discoverUnpaired().then(
 			(success) =>{
-				data.texto = JSON.stringify(success);
+				data.texto = success;
 			},
 			(err)=>{
 				data.texto = "Fracaso";

@@ -21,7 +21,7 @@
 		<ion-icon name="eye"></ion-icon> Hacerte visible
 	</button>
 
-	<ion-card *ngFor="let device from JSON.parse(data.texto)">
+	<ion-card *ngFor="let device of devices">
 		<ion-card-header>
 			<strong>{{device.nombre}}</strong>
 		</ion-card-header>
@@ -31,7 +31,7 @@
 		</ion-card-content>
 	</ion-card>
 
-	{{data.texto}}
+	
 	
 
 </ion-content>
