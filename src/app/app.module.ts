@@ -3,9 +3,12 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
-import { BtComp } from '../logic/btComp';
 
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
+import { IonicStorageModule } from '@ionic/storage';
+
+import { BtComp } from '../logic/BtComp';
+import { PersistComp } from '../logic/PersistComp';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -37,7 +40,9 @@ import { MainMenuPage } from '../pages/main-menu/main-menu';
     StatusBar,
     SplashScreen,
     BluetoothSerial,
+    IonicStorageModule,
     BtComp,
+    PersistComp,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { BtComp } from '../../logic/btComp';
-
+import { BtComp } from '../../logic/BtComp';
+import { PersistComp } from "../../logic/PersistComp"
 /**
  * Generated class for the GroupsPage page.
  *
@@ -17,19 +17,19 @@ import { BtComp } from '../../logic/btComp';
 export class GroupsPage {
 	public devices = [{name:"Don Pepito", address:"AA:AA:AA:AA:AA:AA"}];
 	public texto = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public btc:BtComp) {
-  }
+	constructor(public navCtrl: NavController, public navParams: NavParams, public btc:BtComp, public psc:PersistComp) {
+	}
 
-  buscar(){
-  	this.btc.search(this.devices, this.texto);
-  }
-  setVisible(){
-  	this.btc.setVisible()
-  }
+	buscar(){
+		this.btc.search(this.devices, this.texto);
+	}
+	setVisible(){
+		//this.btc.setVisible()
+	}
 
-  ionViewDidLoad() {
-  	alert("APlicación cargada")
-    console.log('ionViewDidLoad GroupsPage');
-  }
+	ionViewDidLoad() {
+//		alert("APlicación cargada")
+		console.log('ionViewDidLoad GroupsPage');
+  	}
 
 }
