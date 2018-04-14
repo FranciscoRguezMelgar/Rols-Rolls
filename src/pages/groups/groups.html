@@ -14,8 +14,12 @@
 
 <ion-content padding>
 	<button ion-button (click)="buscar()">
-		<ion-icon name="bluetooth"></ion-icon>
+		<ion-icon name="search"></ion-icon> Buscar dispositivos
 	</button>
-	<ion-input [(ngModel)]="data.texto"></ion-input>
+
+	<button ion-button (click)="setVisible()">
+		<ion-icon name="eye"></ion-icon> Hacerte visible
+	</button>
+	
 
 </ion-content>

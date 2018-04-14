@@ -20,7 +20,10 @@ export class GroupsPage {
   }
 
   buscar(){
-  	this.data.texto = this.btc.send();
+  	this.data.texto = this.btc.search();
+  }
+  setVisible(){
+  	this.btc.setVisible()
   }
 
   ionViewDidLoad() {
