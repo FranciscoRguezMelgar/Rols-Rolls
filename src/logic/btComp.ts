@@ -14,7 +14,8 @@ export class BtComp{
 	search(data: Array<Object>, t:Array<string>){		
 		this.bts.discoverUnpaired().then(
 			(unpairedDevices) =>{
-				data = unpairedDevices;
+				data.length = 0;
+				data.push(unpairedDevices)
 				t = [JSON.stringify(data)];
 				alert(t[0])
 			},
