@@ -15,12 +15,12 @@ import { BtComp } from '../../logic/btComp';
   templateUrl: 'groups.html',
 })
 export class GroupsPage {
-	public data = {texto:""}
+	public data = {texto:"Dispositivos: "}
   constructor(public navCtrl: NavController, public navParams: NavParams, public btc:BtComp) {
   }
 
   buscar(){
-  	this.data.texto = this.btc.search();
+  	this.data.texto = this.btc.search(this.data);
   }
   setVisible(){
   	this.btc.setVisible()

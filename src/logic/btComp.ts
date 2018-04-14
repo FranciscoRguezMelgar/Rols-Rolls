@@ -11,17 +11,16 @@ export class BtComp{
 		this.bts.setName("Adrián")
 		this.bts.setDiscoverable(30)
 	}
-	search(){
-		var res;
+	search(data){		
 		this.bts.discoverUnpaired().then(
 			(success) =>{
-				res = success;				
+				data.texto = JSON.stringify(success);
 			},
 			(err)=>{
+				data.texto = "Fracaso";
 				console.log(JSON.stringify(err))
 			}
-		)
-		return res;
+		)		
 	}
 	send(){
 
