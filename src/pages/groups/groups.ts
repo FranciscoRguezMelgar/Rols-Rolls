@@ -16,11 +16,13 @@ import { BtComp } from '../../logic/btComp';
 })
 export class GroupsPage {
 	public devices = [{name:"Don Pepito", address:"AA:AA:AA:AA:AA:AA"}];
+	public texto = "";
   constructor(public navCtrl: NavController, public navParams: NavParams, public btc:BtComp) {
   }
 
   buscar(){
   	this.btc.search(this.devices);
+  	this.texto = JSON.stringify(this.devices)
   }
   setVisible(){
   	this.btc.setVisible()
