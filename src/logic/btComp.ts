@@ -7,7 +7,7 @@ export class BtComp{
 	constructor(public bts: BluetoothSerial){
 
 	}
-	send(object){
+	send(){
 		return JSON.stringify( this.bts.discoverUnpaired())
 	}	
 	receive(){
