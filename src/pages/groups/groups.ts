@@ -20,7 +20,7 @@ export class GroupsPage {
   }
 
   buscar(){
-  	this.data.texto = this.btc.search(this.data);
+  	this.btc.search(this.data);
   }
   setVisible(){
   	this.btc.setVisible()
