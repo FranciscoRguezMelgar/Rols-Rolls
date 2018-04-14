@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { BtComp } from '../../logic/btComp';
 
 /**
  * Generated class for the GroupsPage page.
@@ -14,8 +15,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'groups.html',
 })
 export class GroupsPage {
+	public data = {texto:""}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public btc:BtComp) {
+  }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  buscar(){
+  	this.data.texto = this.btc.send();
   }
 
   ionViewDidLoad() {

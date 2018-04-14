@@ -13,5 +13,9 @@
 </ion-header>
 
 <ion-content padding>
+	<button ion-button (click)="buscar()">
+		<ion-icon name="bluetooth"></ion-icon>
+	</button>
+	<ion-input [(ngModel)]="data.texto"></ion-input>
 
 </ion-content>
