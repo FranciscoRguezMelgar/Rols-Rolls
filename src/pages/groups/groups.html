@@ -12,26 +12,18 @@
 
 </ion-header>
 
-<ion-content padding>
-	<button ion-button (click)="buscar()">
-		<ion-icon name="search"></ion-icon> Buscar dispositivos
-	</button>
+<ion-content padding>	
 
-	<button ion-button (click)="setVisible()">
-		<ion-icon name="eye"></ion-icon> Hacerte visible
-	</button>
-
-	<ion-card *ngFor="let device of devices">
+	<ion-card *ngFor="let group of groupsList">
 		<ion-card-header>
-			<strong>{{device.name}}</strong>
+			<strong>{{group.name}}</strong>
 		</ion-card-header>
-
-		<ion-card-content>
-			{{device.address}}
-		</ion-card-content>
 	</ion-card>
-	
+
 	
 	
 
 </ion-content>
+	<ion-fab bottom right>
+		<button ion-fab>Button</button>
+	</ion-fab>
