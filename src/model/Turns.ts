@@ -6,6 +6,6 @@ export class Turns{
 	*/
 
 	pass(){
-		this.active_player = (++this.active_player)%players.length
+		this.active_player = (++this.active_player)%this.players.length
 	}
 }
