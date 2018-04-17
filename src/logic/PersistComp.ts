@@ -3,32 +3,24 @@ import { Storage } from '@ionic/storage';
 import { Group } from "../model/Group"
 
 @Injectable()
-export class PersistComp{	
+export class PersistComp{
+	public groups: Array<Group>;
+	public ready:boolean = false;
+
 	constructor(public str:Storage){
 		//Indicamos que el módulo de almacenamiento ya está encendido
 		this.str.ready().then(
 			(readyness) => {
-				//Vemos cuántas claves hay
-				this.str.keys().then(
-					(keys) => {
-						if(keys.length == 0){
-							this.str.set("groups", undefined);
-						}
+				this.str.get("groups").then(
+					(value)=>{
+						this.groups = value;
 					}
-				);
+
+				)
 			}
 		);
 	}
-	getGroups(res: Array<Group>){		
-		this.str.get("groups").then(
-			(value) => {
-				res.length = 0;
-				for(var ii = 0; ii < value.length; ii++){
-					res.push(value[ii]);
-				}
-			}
-		)		
-	}
+
 	/*addGroup(){
 		this.str.get("groups").then(
 			(value) =>{

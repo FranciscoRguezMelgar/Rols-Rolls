@@ -29,7 +29,6 @@ export class GroupsPage {
 	ionViewDidLoad() {
 //		alert("APlicación cargada")
 		console.log('ionViewDidLoad GroupsPage');
-		this.psc.getGroups(this.groupsList);
   	}
 
 }
