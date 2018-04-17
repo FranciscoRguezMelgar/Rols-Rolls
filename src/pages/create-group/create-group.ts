@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { BtComp } from '../../logic/BtComp';
 import { JoiningPage } from '../joining/joining';
 
 /**
@@ -21,7 +20,12 @@ export class CreateGroupPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
   }
-
+  createGroup(){
+  	//añadirlo a la persistencia
+  	//empezar a buscar peña
+  	//irte a la página de adhesión
+  	
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreateGroupPage');
   }

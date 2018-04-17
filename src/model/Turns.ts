@@ -1,6 +1,6 @@
 export class Turns{
 	public players:Array<string>
-	public active_player:int
+	public active_player:number
 	/**
 	*	Pasa el turno al siguiente jugador de modo cíclico
 	*/

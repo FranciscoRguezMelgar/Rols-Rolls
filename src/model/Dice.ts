@@ -1,3 +1,3 @@
 export class Dice{
-	public faces:int;
+	public faces:number;
 }

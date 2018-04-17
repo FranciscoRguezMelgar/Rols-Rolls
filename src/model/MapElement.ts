@@ -1,6 +1,6 @@
 export class MapElement{
 	public name:string;
-	public size_x:int;
-	public size_y:int;
+	public size_x:number;
+	public size_y:number;
 	public path:string;
 }

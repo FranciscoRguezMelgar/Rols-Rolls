@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Group } from "../model/Group"
-import { Player } from "../model/Player"
 
 @Injectable()
 export class PersistComp{	

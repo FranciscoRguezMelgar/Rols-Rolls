@@ -1,3 +1,4 @@
+import {Player} from './Player'
 export class ChatRoom{
 	public messages: Array<String>
 	public players:Array<Player>
