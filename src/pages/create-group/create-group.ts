@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { JoiningPage } from '../joining/joining';
+import { PersistComp } from "../../logic/PersistComp"
 
 /**
  * Generated class for the CreateGroupPage page.
@@ -17,14 +18,11 @@ import { JoiningPage } from '../joining/joining';
 export class CreateGroupPage {
   public groupName:string = "";
   public JoiningPage = JoiningPage;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
 
-  }
-  createGroup(){
-  	//añadirlo a la persistencia
-  	//empezar a buscar peña
-  	//irte a la página de adhesión
-  	
+  constructor(public navCtrl: NavController, public navParams: NavParams, public psc:PersistComp) {}
+  goToJoin(){
+    this.navCtrl.setRoot(JoiningPage, {groupName:this.groupName})
+
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreateGroupPage');

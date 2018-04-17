@@ -1,37 +1,14 @@
-import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 import { Injectable } from '@angular/core';
-
-
+import { BLE } from '@ionic-native/ble'
+import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class BtComp{
-	constructor(public bts: BluetoothSerial){
+	constructor(public ble:BLE){
 
 	}
-
-	setVisible(name:string){
-		this.bts.setName(name)
-		this.bts.setDiscoverable(30)
-	}
-	search(data: Array<Object>, t:Array<string>){		
-		this.bts.discoverUnpaired().then(
-			(unpairedDevices) => {
-				data.length = 0;
-				for(var ii = 0; ii < unpairedDevices.length; ii++){
-					data.push(unpairedDevices[ii])
-				}				
-			},
-			(err) => {
-				data = [{name:"Fracaso"}];								
-			}
-		)		
-	}
-	send(){
-
+	esperarJugadores(res/*:Observable<>*/){
+		res = this.ble.startScan([]);
+		console.log(res)
 	}	
-
-	receive(){
-
-	}
-
 
 }

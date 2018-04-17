@@ -3,8 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
-import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
+import { BLE } from '@ionic-native/ble';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { BtComp } from '../logic/BtComp';
@@ -29,7 +28,7 @@ import { JoiningPage } from '../pages/joining/joining';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,8 +42,8 @@ import { JoiningPage } from '../pages/joining/joining';
   providers: [
     StatusBar,
     SplashScreen,
-    BluetoothSerial,
     IonicStorageModule,
+    BLE,
     BtComp,
     PersistComp,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

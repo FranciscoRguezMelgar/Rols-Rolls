@@ -14,21 +14,17 @@ export class PersistComp{
 				this.str.get("groups").then(
 					(value)=>{
 						this.groups = value;
+						if(value === null || value===undefined)
+							this.groups = [];
 					}
-
 				)
 			}
 		);
 	}
-
-	/*addGroup(){
-		this.str.get("groups").then(
-			(value) =>{
-				value.push(new Group())
-			}
-		)
-	}*/
-
+	clear(){
+		this.str.clear().then((a)=>{console.log("Todos los grupos eliminados")});
+		this.groups = [];
+	}
 
 
 

@@ -7,12 +7,20 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>joining</ion-title>
+    <ion-title>Esperando miembros</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+	<div class="bar bar-header bar-positive">
+		<h1 class="title">Se están uniendo jugadores</h1>
+	</div>
+	<ion-spinner large style="padding-left: 100%" name="bubbles"></ion-spinner>
+	<ion-card *ngFor="let player of players |async ">
+		<ion-card-header>
+			{{player}}
+		</ion-card-header>
+	</ion-card>
 </ion-content>

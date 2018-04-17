@@ -14,6 +14,9 @@
 
 <ion-content padding>	
 
+	<button ion-button (click)="this.psc.clear()">
+		Borrar todos
+	</button>	
 	<ion-card *ngFor="let group of psc.groups">
 		<ion-card-header>			
 			<strong>{{group.name}}</strong>			
@@ -21,9 +24,9 @@
 	</ion-card>
 
 	
-	
 
 </ion-content>
+
 <ion-fab bottom right>
 	<button [navPush]="CreateGroupPage" ion-fab>
 		<ion-icon name="add">			
