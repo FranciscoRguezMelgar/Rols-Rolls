@@ -5,6 +5,9 @@ import { PersistComp } from "../../logic/PersistComp"
 
 import { Group } from "../../model/Group"
 
+import { CreateGroupPage } from '../create-group/create-group';
+
+
 /**
  * Generated class for the GroupsPage page.
  *
@@ -18,9 +21,11 @@ import { Group } from "../../model/Group"
   templateUrl: 'groups.html',
 })
 export class GroupsPage {
+	public CreateGroupPage = CreateGroupPage;
 	public groupsList:Array<Group> = []
 	constructor(public navCtrl: NavController, public navParams: NavParams, public btc:BtComp, public psc:PersistComp) {
 	}
+
 	ionViewDidLoad() {
 //		alert("APlicación cargada")
 		console.log('ionViewDidLoad GroupsPage');

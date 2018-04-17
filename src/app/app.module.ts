@@ -15,6 +15,7 @@ import { HomePage } from '../pages/home/home';
 import { CreateGroupPage } from '../pages/create-group/create-group';
 import { GroupsPage } from '../pages/groups/groups';
 import { MainMenuPage } from '../pages/main-menu/main-menu';
+import { JoiningPage } from '../pages/joining/joining';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MainMenuPage } from '../pages/main-menu/main-menu';
     HomePage,
     CreateGroupPage,
     GroupsPage,
-    MainMenuPage
+    MainMenuPage,
+    JoiningPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { MainMenuPage } from '../pages/main-menu/main-menu';
     HomePage,
     CreateGroupPage,
     GroupsPage,
-    MainMenuPage
+    MainMenuPage,
+    JoiningPage
   ],
   providers: [
     StatusBar,

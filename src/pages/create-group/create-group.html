@@ -7,12 +7,16 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>createGroup</ion-title>
+    <ion-title>Crear grupo</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+	<ion-item>
+		<ion-label floating>Nombre del grupo</ion-label>
+		<ion-input ion-input [(ngModel)]="groupName"></ion-input>
+	</ion-item>
+	<button ion-button >Aceptar</button>
 </ion-content>

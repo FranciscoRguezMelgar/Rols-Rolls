@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Group } from "../model/Group"
-import { User } from "../model/User"
+import { Player } from "../model/Player"
 
 @Injectable()
-export class PersistComp{
-	ready = false;
+export class PersistComp{	
 	constructor(public str:Storage){
 		//Indicamos que el módulo de almacenamiento ya está encendido
 		this.str.ready().then(
@@ -15,19 +14,7 @@ export class PersistComp{
 					(keys) => {
 						if(keys.length == 0){
 							this.str.set("groups", undefined);
-						}						
-						this.str.clear().then(
-							(arg) => {
-								var aux = [];
-								for(var ii = 0; ii < 20; ii++){
-									var usuarios= [new User("Paco"), new User("Pepe"), new User("Federica")]
-									aux.push(new Group("Partida "+(ii+1), usuarios));
-
-								}
-								this.str.set("groups", aux)
-								this.ready = true;
-							}
-						)
+						}
 					}
 				);
 			}
@@ -43,6 +30,13 @@ export class PersistComp{
 			}
 		)		
 	}
+	/*addGroup(){
+		this.str.get("groups").then(
+			(value) =>{
+				value.push(new Group())
+			}
+		)
+	}*/
 
 
 

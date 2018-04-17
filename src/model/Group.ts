@@ -1,14 +1,15 @@
-import { User } from "./User";
+import { Player } from "./Player";
 export class Group{
-	public members: User[];
+	
+	public members: Player[];
 	public name:string;
 	
-	constructor(n:string, m:Array<User>){
+	constructor(n:string, m:Array<Player>){
 		this.members = m;
 		this.name = n;
 		
 	}
-	addMember(n: User){
+	addMember(n: Player){
 		this.members.push(n);
 	}
 	getMembers(){
