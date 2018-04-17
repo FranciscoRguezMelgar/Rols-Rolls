@@ -14,8 +14,8 @@ import { BtComp } from '../../logic/BtComp'
   templateUrl: 'joining.html',
 })
 export class JoiningPage {
-  public groupName/*:Observable<>*/;
-  public players:Array<String>
+  public groupName:string;
+  public players = []/*Observable<>*/
   constructor(public navCtrl: NavController, public navParams: NavParams, public btc:BtComp) {
   	this.groupName = this.navParams.get('groupName');	//esto es para que la pantalla anterior me pueda decir qué nombre han puesto
   }
@@ -24,6 +24,7 @@ export class JoiningPage {
     console.log('ionViewDidLoad JoiningPage');
     console.log('El nombre del grupo va a ser: '+this.groupName);
     this.btc.esperarJugadores(this.players)
+    
   }
 
 }

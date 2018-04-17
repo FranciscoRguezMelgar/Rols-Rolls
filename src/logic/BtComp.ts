@@ -7,7 +7,12 @@ export class BtComp{
 
 	}
 	esperarJugadores(res/*:Observable<>*/){
-		res = this.ble.startScan([]);
+		res = this.ble.startScan([])
+		.subscribe(
+			(res)=>{
+				alert(res)
+			}
+		);
 		console.log(res)
 	}	
 
