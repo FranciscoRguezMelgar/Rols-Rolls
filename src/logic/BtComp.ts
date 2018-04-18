@@ -9,11 +9,16 @@ export class BtComp{
 	esperarJugadores(res/*:Observable<>*/){
 		res = this.ble.startScan([])
 		.subscribe(
-			(value)=>{
-				res = value;
+			(device)=>{
+				res = device;
+				console.log(device)
+			},
+			(error)=>{
+				console.log(error)
+				alert(error)
 			}
 		);
 		console.log(res)
-	}	
+	}
 
 }

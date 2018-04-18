@@ -20,11 +20,14 @@ export class JoiningPage {
   	this.groupName = this.navParams.get('groupName');	//esto es para que la pantalla anterior me pueda decir qué nombre han puesto
   }
 
+
+
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad JoiningPage');
     console.log('El nombre del grupo va a ser: '+this.groupName);
     this.btc.esperarJugadores(this.players)
-    
+
   }
 
 }
