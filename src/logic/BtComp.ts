@@ -11,14 +11,15 @@ export class BtComp{
 		.subscribe(
 			(device)=>{
 				res = device;
-				console.log(device)
+					alert(JSON.stringify(device))
 			},
 			(error)=>{
 				console.log(error)
-				alert(error)
+				alert(JSON.stringify(error))
 			}
 		);
 		console.log(res)
 	}
+	
 
 }
