@@ -1,5 +1,6 @@
 import {Player} from './Player'
 export class ChatRoom{
+	public key:string;
 	public messages: Array<String>
 	public players:Array<Player>
 	constructor(){

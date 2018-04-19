@@ -13,18 +13,11 @@
 </ion-header>
 
 <ion-content padding>
-
-	<button ion-button (click)="this.psc.clear()">
-		Borrar todos
-	</button>
 	<ion-card *ngFor="let group of psc.groups">
 		<ion-card-header>
 			<strong>{{group.name}}</strong>
 		</ion-card-header>
 	</ion-card>
-{{btc.kk}}
-
-
 </ion-content>
 
 <ion-fab bottom right>

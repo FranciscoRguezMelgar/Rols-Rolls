@@ -1,0 +1,35 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Iniciar sesión</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-item text-wrap>
+		Introduce tu usuario y tu contraseña para empezar a divertirte, estimado jugador. Si no tienes una cuenta, por favor, usa el botón de Crear Cuenta que hemos puesto en esta pantalla... pensamos en todo, ¿eh?.
+	</ion-item>
+	
+	<ion-item>
+		<ion-label floating>Correo electrónico</ion-label>
+		<ion-input ion-input [(ngModel)]="email"></ion-input>
+	</ion-item>
+	<ion-item>
+		<ion-label floating>Contraseña</ion-label>
+		<ion-input ion-input type="password" [(ngModel)]="password"></ion-input>
+	</ion-item>
+
+	<button (click)="login()" ion-button icon-start><ion-icon name="key"></ion-icon>Entrar</button>
+
+	<button [navPush]="cap" ion-button icon-start><ion-icon name="person"></ion-icon>Crear cuenta</button>
+	
+
+</ion-content>

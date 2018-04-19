@@ -1,30 +1,73 @@
 import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
 import { Group } from "../model/Group"
+import { Player } from '../model/Player'
+import { AngularFireDatabase } from "angularfire2/database"
+import { AngularFireList } from "angularfire2/database"
+import { AngularFireAuth } from 'angularfire2/auth'
+
+
+
 
 @Injectable()
 export class PersistComp{
-	public groups: Array<Group>;
-	public ready:boolean = false;
+	public groupsRef$ : AngularFireList<Group>;
+	public playersRef$ : AngularFireList<Player>;
 
-	constructor(public str:Storage){
-		//Indicamos que el módulo de almacenamiento ya está encendido
-		this.str.ready().then(
-			(readyness) => {
-				this.str.get("groups").then(
-					(value)=>{
-						this.groups = value;
-						if(value === null || value===undefined)
-							this.groups = [];
-					}
+	
+	constructor(private db:AngularFireDatabase, public afa:AngularFireAuth){
+		this.groupsRef$ = this.db.list<Group>('/groups')
+		this.playersRef$ = this.db.list<Player>('/players')
+		console.log(JSON.stringify(this.playersRef$))
+		//alert("Se ha iniciado el servicio de persistencia")
+	}
+
+	createGroup(name:string, masterNick:string){
+		this.groupsRef$.push(
+			new Group(
+					[], //Maps
+					Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5), //random password
+					name, //name of the group
+					[], //texts
+					[], //images
+					[], //rolls
+					null, //turns
+					[new Player("lklklk")], //array with just the master
+					null, //chatroom
+					[] //conversations
 				)
-			}
-		);
+		)
 	}
-	clear(){
-		this.str.clear().then((a)=>{console.log("Todos los grupos eliminados")});
-		this.groups = [];
+	createAccount(email:string, password:string){
+		console.log("HOLA")
+		try{
+			const result = this.afa.auth.createUserWithEmailAndPassword(email, password);
+			return result;
+		}catch(e){
+			console.log("Error en el create, excepción.")
+			console.log(e)
+			return null;
+		}
 	}
+
+	login(email:string, password:string){
+		var a = "ok";
+	try{
+		const result = this.afa.auth.signInWithEmailAndPassword(email, password);
+		return result;
+		//this.navCtrl.setRoot(this.cap)
+	}
+	catch(e){
+		/*let toast = this.ts.create({
+		message: 'La contraseña o el usuario son incorrectos',
+		duration: 3000,
+		position: 'middle',
+
+		});
+		toast.present()*/
+		console.log("Error en el login, excepción."+JSON.stringify(e))
+		return null;
+	}
+}
 
 
 

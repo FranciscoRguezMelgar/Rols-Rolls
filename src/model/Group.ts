@@ -8,6 +8,7 @@ import { ChatRoom } from "./ChatRoom";
 import { Conversation } from "./Conversation";
 
 export class Group{
+	public key:string;
 	public maps: Array<Map>;
 	public password: string;
 	public title: string;

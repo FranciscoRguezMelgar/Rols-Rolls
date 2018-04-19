@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
 /**
- * Generated class for the JoiningPage page.
+ * Generated class for the SigninPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -9,21 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-joining',
-  templateUrl: 'joining.html',
+  selector: 'page-signin',
+  templateUrl: 'signin.html',
 })
-export class JoiningPage {
-  public groupName:string;
-  public players = []/*Observable<>*/
+export class SigninPage {
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-
-
-
   ionViewDidLoad() {
-    console.log('ionViewDidLoad JoiningPage');
-    console.log('El nombre del grupo va a ser: '+this.groupName);
+    console.log('ionViewDidLoad SigninPage');
   }
 
 }

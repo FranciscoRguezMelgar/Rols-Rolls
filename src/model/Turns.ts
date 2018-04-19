@@ -1,4 +1,5 @@
 export class Turns{
+	public key:string;
 	public players:Array<string>
 	public active_player:number
 	/**

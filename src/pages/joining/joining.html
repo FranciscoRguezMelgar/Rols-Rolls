@@ -17,7 +17,7 @@
 	<div class="bar bar-header bar-positive">
 		<h1 class="title">Se están uniendo jugadores</h1>
 	</div>
-	<ion-spinner style="padding-left: 100%" name="bubbles"></ion-spinner>
+	<ion-spinner name="bubbles"></ion-spinner>
 	<ion-card *ngFor="let player of players">
 		<ion-card-header>
 			{{player.name}}
@@ -26,5 +26,4 @@
 			{{player.address}}
 		</ion-card-content>
 	</ion-card>
-	{{player}}
 </ion-content>

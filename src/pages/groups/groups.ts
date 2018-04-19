@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { BtComp } from '../../logic/BtComp';
 import { PersistComp } from "../../logic/PersistComp"
 
 import { Group } from "../../model/Group"
@@ -23,7 +22,11 @@ import { CreateGroupPage } from '../create-group/create-group';
 export class GroupsPage {
 	public CreateGroupPage = CreateGroupPage;
 	public groupsList:Array<Group> = []
-	constructor(public navCtrl: NavController, public navParams: NavParams, public btc:BtComp, public psc:PersistComp) {
+	constructor(
+	public navCtrl: NavController,
+	public navParams: NavParams,
+	public psc:PersistComp){
+		
 	}
 
 	ionViewDidLoad() {
