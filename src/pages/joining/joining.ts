@@ -26,6 +26,7 @@ export class JoiningPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad JoiningPage');
     console.log('El nombre del grupo va a ser: '+this.groupName);
+    this.btc.searchPlayers(this.players);
   }
 
 }
