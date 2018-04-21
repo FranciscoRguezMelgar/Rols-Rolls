@@ -19,6 +19,7 @@ export class Group{
 	public members: Array<Player>;
 	public chatRoom: ChatRoom;
 	public conversations: Array<Conversation>;
+	public open: boolean = false;
 	constructor(
 		maps: Array<Map>,
 		password: string,
@@ -29,7 +30,8 @@ export class Group{
 		turns: Turns,
 		members: Array<Player>,
 		chatRoom: ChatRoom,
-		conversations: Array<Conversation>
+		conversations: Array<Conversation>,
+		open: boolean
 	){
 		this.maps = maps;
 		this.password = password;
@@ -41,5 +43,6 @@ export class Group{
 		this.members = members;
 		this.chatRoom = chatRoom;
 		this.conversations = conversations;
+		this.open = open;
 	}
 }

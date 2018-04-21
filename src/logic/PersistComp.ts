@@ -12,12 +12,12 @@ import { AngularFireAuth } from 'angularfire2/auth'
 export class PersistComp{
 	public groupsRef$ : AngularFireList<Group>;
 	public playersRef$ : AngularFireList<Player>;
-
+	public currentGroup : Group;
 	
-	constructor(private db:AngularFireDatabase, public afa:AngularFireAuth){
-		this.groupsRef$ = this.db.list<Group>('/groups')
-		this.playersRef$ = this.db.list<Player>('/players')
-		console.log(JSON.stringify(this.playersRef$))
+	constructor(private myDb:AngularFireDatabase, public afa:AngularFireAuth){
+		this.groupsRef$ = myDb.list<Group>('/groups');
+		this.playersRef$ = myDb.list<Player>('/players');
+		console.log(JSON.stringify(this.groupsRef$));
 		//alert("Se ha iniciado el servicio de persistencia")
 	}
 
@@ -33,7 +33,8 @@ export class PersistComp{
 					null, //turns
 					[new Player("lklklk")], //array with just the master
 					null, //chatroom
-					[] //conversations
+					[], //conversations
+					true
 				)
 		)
 	}
@@ -49,25 +50,28 @@ export class PersistComp{
 		}
 	}
 
-	login(email:string, password:string){
-		var a = "ok";
-	try{
-		const result = this.afa.auth.signInWithEmailAndPassword(email, password);
-		return result;
-		//this.navCtrl.setRoot(this.cap)
-	}
-	catch(e){
-		/*let toast = this.ts.create({
-		message: 'La contraseña o el usuario son incorrectos',
-		duration: 3000,
-		position: 'middle',
+	login(email:string, password:string){		
+		try{
+			const result = this.afa.auth.signInWithEmailAndPassword(email, password);
+			return result;
+			//this.navCtrl.setRoot(this.cap)
+		}
+		catch(e){
+			/*let toast = this.ts.create({
+			message: 'La contraseña o el usuario son incorrectos',
+			duration: 3000,
+			position: 'middle',
 
-		});
-		toast.present()*/
-		console.log("Error en el login, excepción."+JSON.stringify(e))
-		return null;
+			});
+			toast.present()*/
+			console.log("Error en el login, excepción."+JSON.stringify(e))
+			return null;
+		}
 	}
-}
+
+	getGroups(){
+		return this.groupsRef$;
+	}
 
 
 

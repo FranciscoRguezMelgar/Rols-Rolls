@@ -19,7 +19,7 @@ import { PersistComp } from '../../logic/PersistComp'
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  private cap = CreateAccountPage;
+  public CreateAccountPage = CreateAccountPage;
   public email:string;
   public password:string;
   public confirm:string;

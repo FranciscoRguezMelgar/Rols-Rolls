@@ -21,13 +21,24 @@ import { CreateGroupPage } from '../create-group/create-group';
 })
 export class GroupsPage {
 	public CreateGroupPage = CreateGroupPage;
-	public groupsList:Array<Group> = []
+	public groups$;
 	constructor(
 	public navCtrl: NavController,
 	public navParams: NavParams,
 	public psc:PersistComp){
+				this.groups$ = this.psc.getGroups().snapshotChanges().map(
+			(list)=>{
+				return list.map(
+					(coso)=>{
+						return coso.payload.val()
+					}
+				)
+			}
+		)
 		
 	}
+
+
 
 	ionViewDidLoad() {
 //		alert("APlicación cargada")

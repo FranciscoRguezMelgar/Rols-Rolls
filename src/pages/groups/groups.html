@@ -13,9 +13,12 @@
 </ion-header>
 
 <ion-content padding>
-	<ion-card *ngFor="let group of psc.groups">
+	<button ion-button (click)="getOpenGroups()">
+		Mostrar grupos abiertos (sólo depuración)
+	</button>
+	<ion-card *ngFor="let group of (this.groups$ | async)">
 		<ion-card-header>
-			<strong>{{group.name}}</strong>
+			<strong>{{group.title}}</strong>
 		</ion-card-header>
 	</ion-card>
 </ion-content>

@@ -16,10 +16,8 @@ export class JoiningPage {
   public groupName:string;
   public players = []/*Observable<>*/
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.groupName = this.navParams.get('groupName');
   }
-
-
-
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad JoiningPage');
