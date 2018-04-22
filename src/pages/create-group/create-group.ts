@@ -21,7 +21,7 @@ export class CreateGroupPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public psc:PersistComp) {}
   goToJoin(){
-    var group = this.psc.createGroup(this.groupName)
+    var group = this.psc.createGroup(this.groupName).key;
     this.navCtrl.setRoot(JoiningPage, {"group":group})
 
   }

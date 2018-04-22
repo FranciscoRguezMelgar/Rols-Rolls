@@ -29,7 +29,7 @@ export class PersistComp{
 		var bla = this.groupsRef$.push(
 			new Group(
 					[], //Maps
-					Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5), //random password
+					Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 6), //random password
 					name, //name of the group
 					[], //texts
 					[], //images

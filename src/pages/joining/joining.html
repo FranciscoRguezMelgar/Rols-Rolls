@@ -17,14 +17,15 @@
 	<div class="bar bar-header bar-positive">
 		<h1 class="title">Se están uniendo jugadores</h1>
 	</div>
-	<ion-spinner name="bubbles"></ion-spinner>
-	<button ion-button (click)="printGroup()"></button>
-	<ion-card *ngFor="let player of players">
-		<ion-card-header>
-			{{player.name}}
-		</ion-card-header>
-		<ion-card-content>
-			{{player.address}}
-		</ion-card-content>
-	</ion-card>
+		<ion-spinner style="padding-left: 100%" name="bubbles">Buscando</ion-spinner>
+	<ion-item>
+		<button ion-button (click)="goToMainMenu()" >Finalizar búsqueda</button>
+	</ion-item>
+	<ul *ngFor="let player of (players$ | async)">
+		<ion-card *ngFor="let player2 of player">
+			<ion-card-header>
+				{{player2.nick}}
+			</ion-card-header>
+		</ion-card>
+	</ul>
 </ion-content>
