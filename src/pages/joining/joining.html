@@ -18,6 +18,7 @@
 		<h1 class="title">Se están uniendo jugadores</h1>
 	</div>
 	<ion-spinner name="bubbles"></ion-spinner>
+	<button ion-button (click)="printGroup()"></button>
 	<ion-card *ngFor="let player of players">
 		<ion-card-header>
 			{{player.name}}

@@ -13,6 +13,7 @@ export class PersistComp{
 	public groupsRef$ : AngularFireList<Group>;
 	public playersRef$ : AngularFireList<Player>;
 	public currentGroup : Group;
+	public thisPlayer: Player;
 	
 	constructor(private myDb:AngularFireDatabase, public afa:AngularFireAuth){
 		this.groupsRef$ = myDb.list<Group>('/groups');
@@ -20,9 +21,12 @@ export class PersistComp{
 		console.log(JSON.stringify(this.groupsRef$));
 		//alert("Se ha iniciado el servicio de persistencia")
 	}
+	getDb(){
+		return this.myDb;
+	}
 
-	createGroup(name:string, masterNick:string){
-		this.groupsRef$.push(
+	createGroup(name:string){
+		var bla = this.groupsRef$.push(
 			new Group(
 					[], //Maps
 					Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5), //random password
@@ -31,12 +35,13 @@ export class PersistComp{
 					[], //images
 					[], //rolls
 					null, //turns
-					[new Player("lklklk")], //array with just the master
+					[this.thisPlayer], //array with just the master
 					null, //chatroom
 					[], //conversations
 					true
 				)
 		)
+		return bla;
 	}
 	createAccount(email:string, password:string){
 		console.log("HOLA")
@@ -71,6 +76,9 @@ export class PersistComp{
 
 	getGroups(){
 		return this.groupsRef$;
+	}
+	getUsers(){
+		return this.playersRef$;
 	}
 
 

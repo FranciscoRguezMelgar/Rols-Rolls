@@ -21,8 +21,8 @@ export class CreateGroupPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public psc:PersistComp) {}
   goToJoin(){
-    this.psc.createGroup(this.groupName, "Mr. T")
-    this.navCtrl.setRoot(JoiningPage, {groupName:this.groupName})
+    var group = this.psc.createGroup(this.groupName)
+    this.navCtrl.setRoot(JoiningPage, {"group":group})
 
   }
   ionViewDidLoad() {

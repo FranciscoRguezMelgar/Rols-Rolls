@@ -19,10 +19,12 @@ import { PersistComp } from '../../logic/PersistComp'
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  public CreateAccountPage = CreateAccountPage;
+  public createAccountPage = CreateAccountPage;
+  public groupsPage = GroupsPage;
   public email:string;
   public password:string;
   public confirm:string;
+  public sus;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public ts:ToastController, public psc:PersistComp) {
 
@@ -32,16 +34,33 @@ export class LoginPage {
   login(){
     var user = this.psc.login(this.email, this.password)
     if ( user === null){
+      console.log("El user el nulo.")
       let toast = this.ts.create({
       message: 'La contraseña o el usuario son incorrectos',
       duration: 3000,
       position: 'middle',
       });
       toast.present()
-    }else{
+    }else{      
       user.then(
-        (value)=>{
-          this.navCtrl.setRoot(GroupsPage)
+        (value)=>{          
+          console.log('Lo que me da el then es: ' + JSON.stringify(value))          
+          this.sus = this.psc.playersRef$.snapshotChanges().subscribe(
+            data=>{
+              data.map(
+                element=>{
+                  var elementValue = element.payload.val()
+                  console.log('Un usuario es: ' + JSON.stringify(elementValue))
+                  if(elementValue.uid === value.uid){
+                    console.log("Hemos encontrado al usuario")
+                    this.psc.thisPlayer = elementValue
+                    this.navCtrl.setRoot(this.groupsPage)
+                    return;
+                  }
+                }
+              )
+            }
+          );
         }
       ).catch(
         (value)=>{
@@ -52,7 +71,6 @@ export class LoginPage {
           });
           toast.present()
         });
-
       }
     }
   
@@ -61,6 +79,12 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+  }
+  ionViewDidLeave(){
+    if(this.sus){
+      this.sus.unsubscribe();
+      console.log("Nos hemos desuscrito de la cosa esa")
+    }
   }
 
 }

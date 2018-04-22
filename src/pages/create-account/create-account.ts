@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
-
+import {Player} from '../../model/Player'
 import { PersistComp } from '../../logic/PersistComp'
 /**
  * Generated class for the CreateAccountPage page.
@@ -19,7 +19,7 @@ export class CreateAccountPage {
 	public password:string
 	public email:string;
 	public confirmation:string;
-
+	public username:string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public psc:PersistComp, public ts:ToastController) {
   }
 
@@ -45,7 +45,9 @@ export class CreateAccountPage {
 		return;
   	}
   	res.then(
-  		(value)=>{
+  		(value)=>{//crear cuenta exitoso
+  			console.log(value.uid)
+  			this.psc.playersRef$.push(new Player(this.username, value.uid))
   			this.navCtrl.pop()
   		}
 	).catch(

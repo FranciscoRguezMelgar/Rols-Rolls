@@ -30,5 +30,9 @@
 		<ion-label floating>Confirma contraseña</ion-label>
 		<ion-input ion-input type="password" [(ngModel)]="confirmation"></ion-input>
 	</ion-item>
+		<ion-item>
+		<ion-label floating>Dime tu nombre de usuario</ion-label>
+		<ion-input ion-input type="text" [(ngModel)]="username"></ion-input>
+	</ion-item>
 	<button (click)="createAccount()" ion-button icon-start><ion-icon name="person"></ion-icon>Crear cuenta</button>
 </ion-content>
