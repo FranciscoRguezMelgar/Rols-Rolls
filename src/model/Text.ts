@@ -4,10 +4,10 @@ export class Text{
 	public visible: boolean;
 	equalsTo(other:Text):boolean{
 		var res: boolean;
-		res = true;
-		for (var ii in Text){
-			res = res&& (this[ii] === other[ii])
-		}
+		res =
+			this.content === other.content &&
+			this.title === other.title &&
+			this.visible === other.visible;
 		return res;
 	}
 	constructor(c, t, v){

@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Text } from '../../model/Text'
 import { AlertController } from 'ionic-angular';
 import { PersistComp } from '../../logic/PersistComp'
+import { ToastController } from 'ionic-angular';
+
 /**
  * Generated class for the EditTextPage page.
  *
@@ -20,93 +22,97 @@ export class EditTextPage {
 	public create: boolean;
 	public changed: boolean = false;
 	static readonly emptyText = new Text("", "", false);
-	constructor(public psc: PersistComp, public navCtrl: NavController, public navParams: NavParams, public ac: AlertController) {
+	public old: Text;
+	constructor(public psc: PersistComp, public navCtrl: NavController, public navParams: NavParams, public ac: AlertController, public ts:ToastController) {
 		this.create = this.navParams.get('create')
 		//Es la creación de un texto
 		if(this.create){
 			//Creo el texto vacío.
 			this.text = new Text("", "", false)
 			//Lo meto en el grupo
-			if (!this.psc.currentGroup.texts) this.psc.currentGroup.texts = [];
-			this.psc.currentGroup.texts.push(this.text);
-			//recupero la referencia al texto
-			this.text = this.psc.currentGroup.texts.filter(res => this.text === res)[0];
+			if (!this.psc.currentGroup.texts)
+				this.psc.currentGroup.texts = [];
+
 			//ya hemos creado el texto
-			this.create = !this.create;			
 			return;
 		}
 		this.text = navParams.get('text');
-		this.text = this.psc.currentGroup.texts.filter(res => this.text === res)[0];		
+		this.old = JSON.parse(JSON.stringify(this.text))
+		this.text = this.psc.currentGroup.texts.filter(res => this.text === res)[0];
 	}
-	save(){
+	save(message1:string){
 		//Como el objeto this.text es una referencia al que hay en el objeto, con actualizar el objeto debería valer.
-		this.psc.updateGroup()
+		if(this.create){
+			this.psc.currentGroup.texts.push(this.text);
+			this.create = false;
+		}
+
+		this.psc.updateGroup().then(
+			data=>{
+				this.text = this.psc.currentGroup.texts.filter(
+					res => {
+						var aux = new Text(res.content, res.title, res.visible);
+						console.log('aux: ' + JSON.stringify(aux))
+						console.log('this.text: ' + JSON.stringify(this.text))
+						console.log(aux.equalsTo(this.text))
+						return aux.equalsTo(this.text);
+					}
+				)[0];
+				this.changed = false;
+				let toast = this.ts.create({
+					message: message1,
+					duration: 3000,
+					position: 'middle',
+				});
+				toast.present()
+			}
+		).catch()
+		
 	}
 	open(){
 		//Esto abrirá un archivo de texto, que no sé si lo implementaremos.
 	}
-
-	ionViewDidLoad() {
-		console.log('ionViewDidLoad EditTextPage');
+	discard(){
+		this.text.content = this.old.content;
+		this.text.title = this.old.title;
+		this.save("Texto descartado");
 	}
 
-	ionViewWillLeave(){
-		let alert = this.ac.create({
-			title: 'Datos nuevos',
-			inputs: [
-				/*{
-					name: 'nombre',
-					placeholder: 'Adrián',
-					value: con.nombre
-				},
-				{
-					name: 'organizacion',
-					placeholder: 'Corona de Aragón',
-					value: con.organizacion
-				},
-				{
-					name: "movil",
-					placeholder: "666666666",
-					type: "Phone",
-					value: con.movil
-				},
-				{
-					name: "correo",
-					placeholder: "pepe.pepe@españa.es",
-					type: "email",
-					value: con.correo
+	ionViewDidLoad() {
+		//console.log('ionViewDidLoad EditTextPage');
+	}
 
-				}*/
-			],
+
+	ionViewWillLeave(){
+		var a = this.ac.create({
+			title:'Hay cambios sin guardar, ¿qué quieres hacer?',
+			inputs: [],
 			buttons: [
 				{
-					text: 'Descartar',
-					role: 'cancel',
+					text: "Descartar",
+					role: "cancel",
 					handler: data => {
-						console.log('Text discarted');
+						this.discard();
 					}
 				},
 				{
 					text: 'Guardar',
 					handler: data => {
-						this.save();
+						this.save("Texto Guardado");
 					}
 				}
 			]
 		});
-		var coso;
-		if(this.changed) //si ha cambiado
-			alert.present(); //avisas al usuario de que guarde o descarte		
+		if(this.changed)
+			a.present();
+		
 
-		for (var ii = 0; ii < this.psc.currentGroup.texts.length; ++ii){
-			console.log("ii: " + JSON.stringify(this.psc.currentGroup.texts[ii]))
-			console.log("empty: " + JSON.stringify(EditTextPage.emptyText))
-			if(this.psc.currentGroup.texts[ii].equalsTo(EditTextPage.emptyText)){
-				console.log("Hemos quitado un texto")
-				this.psc.currentGroup.texts.splice(ii,1)
-				--ii;
-			}
-		}
 	}
 
 }
+/*
+
+
+
+
+*/

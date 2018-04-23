@@ -5,7 +5,8 @@ import { CreateAccountPage } from '../create-account/create-account'
 import {GroupsPage} from '../groups/groups'
 import { PersistComp } from '../../logic/PersistComp'
 import { Player } from '../../model/Player'
-
+import {Observable} from 'rxjs/Observable'
+import { Subscription } from 'rxjs/Subscription'
 
 /**
  * Generated class for the LoginPage page.
@@ -25,7 +26,8 @@ export class LoginPage {
 	public email:string;
 	public password:string;
 	public confirm:string;
-	public sus;
+	public sus:Subscription;
+	public p: Player = {key:"", nick:"", uid:""};
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public ts:ToastController, public psc:PersistComp) {
 
@@ -44,23 +46,20 @@ export class LoginPage {
 			toast.present()
 		}else{			
 			user.then(
-				(value)=>{					
-					console.log('Lo que me da el then es: ' + JSON.stringify(value))					
-					this.sus = this.psc.playersRef$.snapshotChanges().subscribe(
-						data=>{
-							data.map(
-								element=>{
-									var elementValue = {key:element.key,...element.payload.val()} as Player
-									if(elementValue.uid === value.uid){
-										console.log("Login hecho satisfactoriamente para el usuario: " + JSON.stringify(elementValue))
-										this.psc.thisPlayer = elementValue
-										this.navCtrl.setRoot(this.groupsPage)
-										return;
-									}
+				(value)=>{				
+					console.log('Lo que me da el then es: ' + JSON.stringify(value))															
+					this.sus = this.psc.playersRef$.snapshotChanges().map(
+						data => {
+							console.log("hola")
+							data.filter(data => data.payload.val().uid === value.uid).map(
+								el => {
+									console.log("Hemos encontrado un jugador")
+									this.navCtrl.setRoot(this.groupsPage)
+									this.psc.thisPlayer = { key: el.key, ...el.payload.val() } as Player;
 								}
 							)
 						}
-					);
+					).subscribe()
 				}
 			).catch(
 				(value)=>{
@@ -81,10 +80,11 @@ export class LoginPage {
 		console.log('ionViewDidLoad LoginPage');
 	}
 	ionViewDidLeave(){
-		if(this.sus){
+		if (this.sus)
 			this.sus.unsubscribe();
-			console.log("Nos hemos desuscrito de la cosa esa")
-		}
-	}
 
+
+	}
 }
+
+

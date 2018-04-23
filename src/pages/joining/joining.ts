@@ -23,14 +23,14 @@ export class JoiningPage {
 	public players$;/*Observable<>*/
 	public sus:Subscription;
 	constructor(public navCtrl: NavController, public navParams: NavParams, public psc: PersistComp) {
-		var key:string = this.navParams.get('group');
-		this.sus = this.psc.getGroups().snapshotChanges().map(
+		/*var key:string = this.navParams.get('group');		
+		this.psc.currentGroup = this.psc.getGroups().snapshotChanges().map(
 			data => {
-				data.filter(el => el.key === key).map(coso => {
-					this.psc.currentGroup = { key: coso.key, ...coso.payload.val() } as Group;
+				return data.filter(el => el.key === key).map(coso => {
+					return{ key: coso.key, ...coso.payload.val() } as Group;
 				});
 			}
-		).subscribe();
+		);
 		this.players$ = this.psc.getGroups().snapshotChanges()
 		.map(
 			data => {
@@ -46,7 +46,7 @@ export class JoiningPage {
 					}
 				)
 			}
-		);
+		);*/
 	}
 
 	ionViewDidLoad() {
@@ -59,7 +59,7 @@ export class JoiningPage {
 	}
 	goToMainMenu(){
 		//Tenemos que cerrar el grupo para que no salga en la lista de los jugadores que entren.
-		this.psc.currentGroup.open = false;		
+		//this.psc.currentGroup.open = false;		
 		this.psc.updateGroup();
 		this.navCtrl.setRoot(MainMenuPage)
 	}

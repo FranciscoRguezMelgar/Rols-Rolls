@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PersistComp } from '../../logic/PersistComp'
 import { Text } from '../../model/Text'
 import { EditTextPage } from '../edit-text/edit-text'
+import {Observable} from 'rxjs/Observable'
+import { Subscription } from 'rxjs/Subscription'
 /**
  * Generated class for the TextsPage page.
  *
@@ -17,6 +19,7 @@ import { EditTextPage } from '../edit-text/edit-text'
 })
 export class TextsPage {
 	public editTextPage= EditTextPage;
+	public texts$;
 	constructor(public navCtrl: NavController, public navParams: NavParams, public psc: PersistComp) {
 	}
 	edit(text: Text){
@@ -36,6 +39,7 @@ export class TextsPage {
 		this.psc.updateGroup()
 	}
 	ionViewDidLoad() {
+		this.texts$ = this.psc.currentGroup.texts;
 		console.log('ionViewDidLoad TextsPage');
 	}
 
