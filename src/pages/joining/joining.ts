@@ -36,13 +36,13 @@ export class JoiningPage {
 			data => {
 				return data.filter(
 					element=>{
-						console.log("HOLA Fernando")
-						return ({ key: element.key, ...element.payload.val() } as Group).key === key;
+						console.log("Buscando el grupo que se ha creado")
+						return ( { key: element.key, ...element.payload.val() } as Group).key === key;
 					}
 				).map(
 					thingy=>{
-						console.log("Estamos mapeaaaaando: " + JSON.stringify(({ key: thingy.key, ...thingy.payload.val() } as Group).members))
-						return ({ key: thingy.key,... thingy.payload.val() } as Group).members;
+						console.log("Se ha encontrado el grupo recién creado y es: " + JSON.stringify(({ key: thingy.key, ...thingy.payload.val() } as Group).members))
+						return ( { key: thingy.key,... thingy.payload.val() } as Group).members;
 					}
 				)
 			}
@@ -59,9 +59,8 @@ export class JoiningPage {
 	}
 	goToMainMenu(){
 		//Tenemos que cerrar el grupo para que no salga en la lista de los jugadores que entren.
-		var aux:Group = this.psc.currentGroup;
-		aux.open = false;
-		this.psc.getGroups().update(this.psc.currentGroup.key, aux)
+		this.psc.currentGroup.open = false;		
+		this.psc.updateGroup();
 		this.navCtrl.setRoot(MainMenuPage)
 	}
 

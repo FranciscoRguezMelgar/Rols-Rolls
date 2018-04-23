@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { TextsPage } from '../texts/texts'
 /**
  * Generated class for the MainMenuPage page.
  *
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-main-menu',
-  templateUrl: 'main-menu.html',
+	selector: 'page-main-menu',
+	templateUrl: 'main-menu.html',
 })
 export class MainMenuPage {
+	public textsPage = TextsPage;
+	constructor(public navCtrl: NavController, public navParams: NavParams) {
+	}
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MainMenuPage');
-  }
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad MainMenuPage');
+	}
 
 }

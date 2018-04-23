@@ -20,6 +20,8 @@ import { JoiningPage } from '../pages/joining/joining';
 import { LoginPage } from '../pages/login/login';
 import { SigninPage } from '../pages/signin/signin';
 import { CreateAccountPage } from '../pages/create-account/create-account';
+import { TextsPage } from '../pages/texts/texts';
+import { EditTextPage } from '../pages/edit-text/edit-text';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { CreateAccountPage } from '../pages/create-account/create-account';
     LoginPage,
     SigninPage,
     CreateAccountPage,
+    EditTextPage,
+    TextsPage,
     CreateGroupPage,
     GroupsPage,
     MainMenuPage,
@@ -48,6 +52,8 @@ import { CreateAccountPage } from '../pages/create-account/create-account';
     LoginPage,
     SigninPage,
     CreateAccountPage,
+    EditTextPage,
+    TextsPage,
     CreateGroupPage,
     GroupsPage,
     MainMenuPage,

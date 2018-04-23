@@ -7,12 +7,50 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>mainMenu</ion-title>
+    <ion-title>Menú Principal</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
-
+	<button ion-button large full icon-start>
+		<ion-icon large name="map">
+		</ion-icon>
+		Mapas
+	</button>
+	<button ion-button large full icon-start [navPush]='textsPage'>
+		<ion-icon large name="clipboard">
+		</ion-icon>
+		Textos
+	</button>
+	<button ion-button large full icon-start>
+		<ion-icon large name="chatbubbles">
+		</ion-icon>
+		Chats
+	</button>
+	<button ion-button large full icon-start>
+		<ion-icon large name="cube">
+		</ion-icon>
+		Tiradas
+	</button>
+	<button ion-button large full icon-start>
+		<ion-icon large name="list">
+		</ion-icon>
+		Turnos de juego
+	</button>
+	<button ion-button large full icon-start>
+		<ion-icon large name="color-wand">
+		</ion-icon>
+		Gestión del grupo
+	</button>
+	<button ion-button large full icon-start>
+		<ion-icon large name="image">
+		</ion-icon>
+		Imágenes
+	</button>
+	<button ion-button large full icon-start>
+		<ion-icon large name="arrow-round-back">
+		</ion-icon>
+		Cambiar de grupo
+	</button>
 </ion-content>

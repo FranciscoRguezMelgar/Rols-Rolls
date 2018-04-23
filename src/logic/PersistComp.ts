@@ -80,6 +80,9 @@ export class PersistComp{
 	getUsers(){
 		return this.playersRef$;
 	}
+	updateGroup(){
+		this.getGroups().update(this.currentGroup.key, this.currentGroup)
+	}
 
 
 

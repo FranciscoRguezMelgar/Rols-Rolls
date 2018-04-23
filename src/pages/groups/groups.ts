@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Group } from "../../model/Group"
 
 import { CreateGroupPage } from '../create-group/create-group';
+import { MainMenuPage } from '../main-menu/main-menu';
 
 
 /**
@@ -48,11 +49,12 @@ export class GroupsPage {
 			}
 		)
 	}
-	goToMainMenu(){
+	goToMainMenu(group:Group){
 		//TODO: hacer que vaya al menú principal y que funcionen las cosas.
 		//es muy recomendable que pongamos un current group para referenciarlo rápidamente
 		//no hay que olvidarse de hacer updates para que los cambios se guarden.
-		return undefined;
+		this.psc.currentGroup = group;
+		this.navCtrl.setRoot(MainMenuPage)
 	}
 
 }//fin de la clase
