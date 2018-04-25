@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PersistComp } from "../../logic/PersistComp"
 import { Observable } from 'rxjs/Observable';
 import { Group } from "../../model/Group"
-import { Player } from "../../model/Player"
+//import { Player } from "../../model/Player"
 
 import { CreateGroupPage } from '../create-group/create-group';
 import { MainMenuPage } from '../main-menu/main-menu';

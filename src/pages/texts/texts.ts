@@ -3,8 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PersistComp } from '../../logic/PersistComp'
 import { Text } from '../../model/Text'
 import { EditTextPage } from '../edit-text/edit-text'
-import {Observable} from 'rxjs/Observable'
-import { Subscription } from 'rxjs/Subscription'
+//import { Observable } from 'rxjs/Observable'
+//import { Subscription } from 'rxjs/Subscription'
 /**
  * Generated class for the TextsPage page.
  *

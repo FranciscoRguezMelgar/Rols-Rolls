@@ -4,7 +4,7 @@ import { Player } from '../model/Player'
 import { AngularFireDatabase } from "angularfire2/database"
 import { AngularFireList } from "angularfire2/database"
 import { AngularFireAuth } from 'angularfire2/auth'
-import { Observable } from 'rxjs/Observable'
+//import { Observable } from 'rxjs/Observable'
 import { Subscription } from 'rxjs/Subscription'
 
 

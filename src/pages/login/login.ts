@@ -5,7 +5,7 @@ import { CreateAccountPage } from '../create-account/create-account'
 import {GroupsPage} from '../groups/groups'
 import { PersistComp } from '../../logic/PersistComp'
 import { Player } from '../../model/Player'
-import {Observable} from 'rxjs/Observable'
+//import {Observable} from 'rxjs/Observable'
 import { Subscription } from 'rxjs/Subscription'
 
 /**

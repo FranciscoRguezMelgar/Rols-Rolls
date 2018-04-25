@@ -23,30 +23,19 @@ export class JoiningPage {
 	public players$;/*Observable<>*/
 	public sus:Subscription;
 	constructor(public navCtrl: NavController, public navParams: NavParams, public psc: PersistComp) {
-		/*var key:string = this.navParams.get('group');		
-		this.psc.currentGroup = this.psc.getGroups().snapshotChanges().map(
-			data => {
-				return data.filter(el => el.key === key).map(coso => {
-					return{ key: coso.key, ...coso.payload.val() } as Group;
-				});
-			}
-		);
-		this.players$ = this.psc.getGroups().snapshotChanges()
-		.map(
-			data => {
-				return data.filter(
-					element=>{
-						console.log("Buscando el grupo que se ha creado")
-						return ( { key: element.key, ...element.payload.val() } as Group).key === key;
-					}
-				).map(
-					thingy=>{
-						console.log("Se ha encontrado el grupo recién creado y es: " + JSON.stringify(({ key: thingy.key, ...thingy.payload.val() } as Group).members))
-						return ( { key: thingy.key,... thingy.payload.val() } as Group).members;
+		var key:string = this.navParams.get('group');		
+		this.psc.currentGroupSus = this.psc.getGroups().snapshotChanges().map(
+			list => {
+				list.filter(predicate => predicate.key === key).map(
+					el=>{
+						this.psc.currentGroup = { key: el.key, ...el.payload.val() } as Group;
+						console.log("Se ha modificado un grupo a=> ")
+						console.log(JSON.stringify(this.psc.currentGroup))
+						this.players$ = this.psc.currentGroup.members;
 					}
 				)
 			}
-		);*/
+		).subscribe();
 	}
 
 	ionViewDidLoad() {
@@ -59,7 +48,7 @@ export class JoiningPage {
 	}
 	goToMainMenu(){
 		//Tenemos que cerrar el grupo para que no salga en la lista de los jugadores que entren.
-		//this.psc.currentGroup.open = false;		
+		this.psc.currentGroup.open = false;		
 		this.psc.updateGroup();
 		this.navCtrl.setRoot(MainMenuPage)
 	}
