@@ -55,7 +55,7 @@ export class GroupsPage {
 				list.filter(el => el.key === group.key).map(
 					element => {
 						console.log("Ha habido cambios en el grupo y ha saltado el subscribe")
-						this.psc.currentGroup = { key: element, ...element.payload.val() } as Group;
+						this.psc.currentGroup = { key: element.key, ...element.payload.val() } as Group;
 
 					}
 				)

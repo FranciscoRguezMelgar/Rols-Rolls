@@ -20,16 +20,16 @@
 			<strong>{{roll.name}}</strong>
 		</ion-card-header>
 		<ion-card-content>
-			<button ion-button icon-start (click)="edit()">
+			<button ion-button icon-start (click)="edit(roll)">
 				<ion-icon name="color-wand"></ion-icon>
 				Editar
 			</button>
-			<button ion-button icon-start (click)="delete()">
+			<button ion-button icon-start (click)="delete(roll)">
 				<ion-icon name="trash"></ion-icon>
 				Eliminar
 			</button>
-			<button ion-button icon-start (click)="roll()">
-				<ion-icon name="cube"></ion-icon>
+			<button ion-button icon-start (click)="doRoll(roll)">
+				<ion-icon name="albums"></ion-icon>
 				Tirar
 			</button>
 		</ion-card-content>	

@@ -82,7 +82,8 @@ export class PersistComp{
 	getUsers(){
 		return this.playersRef$;
 	}
-	updateGroup(){		
+	updateGroup(){
+		console.log("Se ha hecho updateGroup() sobre: " + JSON.stringify(this.currentGroup))
 		return this.getGroups().update(this.currentGroup.key, this.currentGroup);
 	}
 
