@@ -22,7 +22,8 @@ import { SigninPage } from '../pages/signin/signin';
 import { CreateAccountPage } from '../pages/create-account/create-account';
 import { TextsPage } from '../pages/texts/texts';
 import { EditTextPage } from '../pages/edit-text/edit-text';
-
+import { RollsPage } from '../pages/rolls/rolls';
+import { EditRollPage } from '../pages/edit-roll/edit-roll';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { EditTextPage } from '../pages/edit-text/edit-text';
     CreateAccountPage,
     EditTextPage,
     TextsPage,
+    RollsPage,
     CreateGroupPage,
+    EditRollPage,
     GroupsPage,
     MainMenuPage,
     JoiningPage
@@ -54,7 +57,10 @@ import { EditTextPage } from '../pages/edit-text/edit-text';
     CreateAccountPage,
     EditTextPage,
     TextsPage,
+    EditRollPage,
     CreateGroupPage,
+    RollsPage,
+    EditRollPage,
     GroupsPage,
     MainMenuPage,
     JoiningPage

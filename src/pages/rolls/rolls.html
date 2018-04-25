@@ -7,12 +7,38 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>rolls</ion-title>
+    <ion-title>Tiradas</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+	<ion-card *ngFor="let roll of this.psc.currentGroup.rolls">
+		<ion-card-header icon-start>
+			<ion-icon name="cube"></ion-icon>
+			<strong>{{roll.name}}</strong>
+		</ion-card-header>
+		<ion-card-content>
+			<button ion-button icon-start (click)="edit()">
+				<ion-icon name="color-wand"></ion-icon>
+				Editar
+			</button>
+			<button ion-button icon-start (click)="delete()">
+				<ion-icon name="trash"></ion-icon>
+				Eliminar
+			</button>
+			<button ion-button icon-start (click)="roll()">
+				<ion-icon name="cube"></ion-icon>
+				Tirar
+			</button>
+		</ion-card-content>	
+	</ion-card>
 </ion-content>
+
+<ion-fab bottom right>
+	<button (click)='create()' ion-fab>
+		<ion-icon name="add">
+		</ion-icon>
+	</button>
+</ion-fab>

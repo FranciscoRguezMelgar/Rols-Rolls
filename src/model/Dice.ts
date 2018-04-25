@@ -1,4 +1,6 @@
 export class Dice{
-	public key:string;
 	public faces:number;
+	public equals(other: Dice){
+		return this.faces === other.faces;
+	}
 }
