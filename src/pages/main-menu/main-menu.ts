@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TextsPage } from '../texts/texts'
 import { RollsPage } from '../rolls/rolls'
+import { GroupManagementPage } from '../group-management/group-management'
 /**
  * Generated class for the MainMenuPage page.
  *
@@ -17,6 +18,7 @@ import { RollsPage } from '../rolls/rolls'
 export class MainMenuPage {
 	public textsPage = TextsPage;
 	public rollsPage = RollsPage;
+	public groupManagementPage = GroupManagementPage;
 	constructor(public navCtrl: NavController, public navParams: NavParams) {
 	}
 

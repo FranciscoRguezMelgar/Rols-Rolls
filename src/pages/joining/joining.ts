@@ -17,11 +17,8 @@ import { Group } from '../../model/Group'
 	selector: 'page-joining',
 	templateUrl: 'joining.html',
 })
-export class JoiningPage {	
-	
-	public group: Group;
+export class JoiningPage {		
 	public players$;/*Observable<>*/
-	public sus:Subscription;
 	constructor(public navCtrl: NavController, public navParams: NavParams, public psc: PersistComp) {
 		var key:string = this.navParams.get('group');		
 		this.psc.currentGroupSus = this.psc.getGroups().snapshotChanges().map(
@@ -35,16 +32,13 @@ export class JoiningPage {
 					}
 				)
 			}
-		).subscribe();
+		).subscribe();		
 	}
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad JoiningPage');
-		console.log('El nombre del grupo va a ser: '+JSON.stringify(this.group));
 	}
 	ionViewDidLeave(){
-		if(this.sus)
-			this.sus.unsubscribe()
 	}
 	goToMainMenu(){
 		//Tenemos que cerrar el grupo para que no salga en la lista de los jugadores que entren.

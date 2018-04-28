@@ -24,6 +24,7 @@ import { TextsPage } from '../pages/texts/texts';
 import { EditTextPage } from '../pages/edit-text/edit-text';
 import { RollsPage } from '../pages/rolls/rolls';
 import { EditRollPage } from '../pages/edit-roll/edit-roll';
+import { GroupManagementPage } from '../pages/group-management/group-management'
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { EditRollPage } from '../pages/edit-roll/edit-roll';
     TextsPage,
     RollsPage,
     CreateGroupPage,
+    GroupManagementPage,
     EditRollPage,
     GroupsPage,
     MainMenuPage,
@@ -59,6 +61,7 @@ import { EditRollPage } from '../pages/edit-roll/edit-roll';
     TextsPage,
     EditRollPage,
     CreateGroupPage,
+    GroupManagementPage,
     RollsPage,
     EditRollPage,
     GroupsPage,
